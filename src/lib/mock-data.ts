@@ -1,16 +1,28 @@
 export interface File {
   id: string;
   name: string;
-  type: "file" | "folder";
-  url?: string;
-  parent: string | null;
-  size?: string;
+  type: "file";
+  url: string;
+  parent: string;
+  size: string;
 }
 
+export type Folder = {
+  id: string;
+  name: string;
+  type: "folder";
+  parent: string | null;
+};
+
+export const mockFolders: Folder[] = [
+  { id: "1", name: "Documents", type: "folder", parent: "root" },
+  { id: "2", name: "Images", type: "folder", parent: "root" },
+  { id: "3", name: "Work", type: "folder", parent: "root" },
+  { id: "4", name: "assets", type: "folder", parent: "3" },
+  { id: "5", name: "creds", type: "folder", parent: "4" },
+];
+
 export const mockFiles: File[] = [
-  { id: "1", name: "Documents", type: "folder", parent: null },
-  { id: "2", name: "Images", type: "folder", parent: null },
-  { id: "3", name: "Work", type: "folder", parent: null },
   {
     id: "4",
     name: "Resume.pdf",
@@ -18,6 +30,15 @@ export const mockFiles: File[] = [
     url: "/files/resume.pdf",
     parent: "1",
     size: "1.2 MB",
+  },
+
+  {
+    id: "7",
+    name: "cred.pdf",
+    type: "file",
+    url: "/files/cred.pdf",
+    parent: "5",
+    size: "2.5 MB",
   },
   {
     id: "5",
@@ -43,7 +64,14 @@ export const mockFiles: File[] = [
     parent: "2",
     size: "1.8 MB",
   },
-  { id: "8", name: "Presentations", type: "folder", parent: "3" },
+  {
+    id: "8",
+    name: "Presentations",
+    type: "file",
+    parent: "3",
+    url: "/files/presentations.pptx",
+    size: "5.6 MB",
+  },
   {
     id: "9",
     name: "Q4 Report.pptx",
