@@ -44,3 +44,7 @@ yarn-error.log*
 
 # idea files
 .idea
+
+
+# local only seed enpoint
+/src/app/seed
