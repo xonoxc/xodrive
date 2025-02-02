@@ -1,5 +1,5 @@
 // Example model schema from the Drizzle docs
-// https://orm.drizzle.team/docs/sql-schema-declaration
+import "server-only";
 
 import {
   serial,
@@ -31,6 +31,8 @@ export const files = createTable(
   }),
 );
 
+export type FileDB = typeof files.$inferSelect;
+
 export const folders = createTable(
   "folders_table",
   {
@@ -42,3 +44,5 @@ export const folders = createTable(
     indexes: [index("parent_index").on(t.parent)],
   }),
 );
+
+export type FolderDB = typeof folders.$inferSelect;
